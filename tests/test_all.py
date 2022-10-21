@@ -1,11 +1,14 @@
 import unittest
-from DownloadDMARCFilesFromGmail.download import authenticate
+from DownloadDMARCFilesFromGmail.download import *
 
 class AllTests(unittest.TestCase):
 
     def test_authenticate(self):
         service = authenticate()
-        message = service.users().messages().list(userId="me", maxResults=1).execute()
+        labelId = labelIdFromName(service, "DMARC")
+       
+        message = service.users().messages().list(userId="me", maxResults=1, labelIds=[labelId]).execute()
+        print(message)
 
 if(__name__ == "__main__"):
     unittest.main()
