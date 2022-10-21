@@ -1,3 +1,4 @@
+from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.oauth2.credentials import Credentials
@@ -27,7 +28,7 @@ class GmailAuth:
             if creds and creds.expired and creds.refresh_token:
                 creds.refresh(Request())
             else:
-                flow = InstalledAppFlow.from_client_secrets_file(self.clientIdFileName, scopes)
+                flow = InstalledAppFlow.from_client_secrets_file(self.clientIdFileName, self.scopes)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
             with open(self.tokenFileName, 'wb') as token:

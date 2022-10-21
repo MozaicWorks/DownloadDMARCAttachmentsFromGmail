@@ -1,5 +1,5 @@
 run:
-	pipenv run python download.py 
+	pipenv run python DownloadDMARCFilesFromGmail/download.py 
 
 dev-install:
 	pipenv install
