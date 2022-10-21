@@ -11,8 +11,6 @@ def main():
  
     downloadAttachments(service, labelId, replaceWithLabelId, "out/")
 
-    #processSingleMessage('1839d56659ea4fbd', labelId, replaceWithLabelId)
-
 def downloadAttachments(service, labelId, replaceWithLabelId, downloadPath):
     messages = messagesWithLabel(service, labelId)["messages"]
     print("Found {messageCount} messages".format(messageCount = len(messages)))
@@ -22,7 +20,7 @@ def downloadAttachments(service, labelId, replaceWithLabelId, downloadPath):
         try: 
             processMessage(service, message["id"], labelId, replaceWithLabelId)
         except:
-            print(message)
+            print("Error at message {message}".format(message=message))
 
 
 def processMessage(service, messageId, labelId, replaceWithLabelId):
