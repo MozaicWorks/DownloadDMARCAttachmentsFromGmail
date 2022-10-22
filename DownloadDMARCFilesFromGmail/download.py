@@ -4,8 +4,8 @@ import argparse
 
 def main():
     parser = argparse.ArgumentParser(description='Download DMARC attachments from your Gmail account. The emails are found based on a label, and once the download is succesfull the processed label is applied. First you need to setup a Google Cloud Console app that allows access to Gmail API. Visit https://console.cloud.google.com to set it up, copy the authentication file to the secrets folder, and rename it to "client_id.json".')
-    parser.add_argument('labelName', type=str, help='The Gmail label assigned to DMARC emails. Default is "DMARC"', default="DMARC")
-    parser.add_argument('processedLabelName', type=str, help='The Gmail label that will be assigned to processed DMARC emails. Default is "PROCESSED_DMARC"', default="PROCESSED_DMARC")
+    parser.add_argument('--labelName', type=str, help='The Gmail label assigned to DMARC emails. Default is "DMARC"', default="DMARC")
+    parser.add_argument('--processedLabelName', type=str, help='The Gmail label that will be assigned to processed DMARC emails. Default is "PROCESSED_DMARC"', default="PROCESSED_DMARC")
 
     args = parser.parse_args()
     
