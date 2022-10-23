@@ -23,6 +23,10 @@ Third, create a label under which the messages will be posted after a successful
 
 You are now ready to run it. Just pass in the label name and the processed label name, if different from the defaults. The tool will download the attachments for messages found under the DMARC label into an `out` folder and replace the DMARC label with the processed label. This allows you to double check the results, and do whatever you want with the processed messages.
 
+## Known Issues
+
+We're still figuring out the different ways the attachment id is found in Gmail messages, so processing fails for some messages.
+
 ## Limitations
 
 Due to limitations in the Gmail API, the tool processes max. 500 messages at once. If you have more than 500 DMARC messages, just run it again until you process all the files.
@@ -34,9 +38,9 @@ If you're looking for a simple tool to generate a report from the downloaded att
 ## Development setup 
 
 * Make sure you have python 3.10
-* Install pipenv
-* Run make dev-install or pipenv install
-* Run make run
+* Install [pipenv](https://pipenv.pypa.io/en/latest/#install-pipenv-today)
+* Run `make dev-install` or `pipenv install`
+* Run `make run`
 
 ## Development Notes
 
