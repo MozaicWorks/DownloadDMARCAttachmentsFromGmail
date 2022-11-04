@@ -1,6 +1,7 @@
 from GmailAuth import *
 from GmailLabelQuery import *
 import argparse
+import sys
 
 def main():
     parser = argparse.ArgumentParser(description='Download DMARC attachments from your Gmail account. The emails are found based on a label, and once the download is succesfull the processed label is applied. First you need to setup a Google Cloud Console app that allows access to Gmail API. Visit https://console.cloud.google.com to set it up, copy the authentication file to the secrets folder, and rename it to "client_id.json".')
@@ -14,7 +15,7 @@ def main():
     try:
         service = authenticate()
     except:
-        sys.exit("Authentication failed. Have you enabled access to Gmail API?")
+        sys.exit("ERROR: Authentication failed. Have you enabled access to Gmail API? Check https://github.com/MozaicWorks/DownloadDMARCAttachmentsFromGmail#how-to-use for instructions")
 
     labelQuery = GmailLabelQuery(service)
     labelId = labelQuery.labelIdFromName(labelName)
