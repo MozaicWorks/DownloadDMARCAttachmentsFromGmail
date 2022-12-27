@@ -12,9 +12,22 @@ First, you need to give the tool access to your Gmail account through the API. H
 * Create a new project, for example named "DownloadDMARCAttachments"
 * Select the newly created project
 * Enable the Gmail API
-* Configure the OAuth consent screen
-* Use in scopes 'https://www.googleapis.com/auth/gmail.modify'
-* Go to credentials and create a new OAuth 2.0 Client ID; download the JSON file
+  * Navigate to the [API Console](https://console.developers.google.com/)
+  * Select on **ENABLE APIS AND SERVICES**
+  * Search for **gmail**
+  * Select **Gmail API**
+  * Select **Enable**
+* Configure the **OAuth consent**
+  * Select **OAuth consent screen** from the left navigation pane
+  * Go throught the wizard to create an App
+  * Use in scopes 'https://www.googleapis.com/auth/gmail.modify'
+* Configure the **Credentials**
+  * Select **Credentials** from the left navigation pane
+  * Select **CREATE CREDENTIALS** and select **OAuth Client ID**
+  * For **Application type** select **Desktop app**
+  * For **Name** fill in "DownloadDMARCAttachments"
+  * Select **Create**
+  * Download the JSON file
 * Create a `secrets` folder, copy the client json file into it, and rename it to `client_id.json`
 
 Second, you need to ensure that all the DMARC messages in your Gmail inbox have a label. By default, the label is "DMARC".
