@@ -60,8 +60,19 @@ If you're looking for a simple tool to generate a report from the downloaded att
 
 * Make sure you have python 3.10
 * Install [pipenv](https://pipenv.pypa.io/en/latest/#install-pipenv-today)
-* Run `make dev-install` or `pipenv install`
-* Run `make run`
+
+With default arguments, i.e. `--labelName DMARC --processedLabelName PROCESSED_DMARC`
+
+```bash
+make install
+make run
+```
+
+To pass arguments:
+
+```bash
+make run args="--labelName dmarc --processedLabelName processed-dmarc"
+```
 
 ## Development Notes
 
