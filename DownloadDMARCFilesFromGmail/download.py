@@ -1,7 +1,9 @@
-from GmailAuth import GmailAuth
-from GmailLabelQuery import GmailLabelQuery
 import argparse
 import sys
+import os
+
+from GmailAuth import GmailAuth
+from GmailLabelQuery import GmailLabelQuery
 
 
 def main():
