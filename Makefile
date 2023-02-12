@@ -32,6 +32,10 @@ deb-install: ## Install Debian package
 deb-remove: ## Uninstall Debian package
 	sudo apt purge downloaddmarcfilesfromgmail_1.0_amd64.deb
 
+format: ## Format source and test code according to PEP8 standards
+	pipenv run black --skip-string-normalization DownloadDMARCFilesFromGmail
+	pipenv run black --skip-string-normalization tests
+
 lint: ## Check compliance with the style guide
 	pipenv run flake8
 
