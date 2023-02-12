@@ -28,11 +28,18 @@ def main():
         help='The Gmail label that will be assigned to processed DMARC emails. Default is "PROCESSED_DMARC"',
         default="PROCESSED_DMARC",
     )
+    parser.add_argument(
+        '--output',
+        type=str,
+        help='The location where to store the downloaded DMARC reports. Default is "./out"',
+        default="out",
+    )
 
     args = parser.parse_args()
 
     labelName = args.labelName
     processedLabelName = args.processedLabelName
+    downloadPath = args.output
     try:
         service = authenticate()
     except Exception as e:
@@ -46,7 +53,7 @@ def main():
     labelId = labelQuery.labelIdFromName(labelName)
     replaceWithLabelId = labelQuery.labelIdFromName(processedLabelName)
 
-    downloadAttachments(service, labelId, replaceWithLabelId, "out/")
+    downloadAttachments(service, labelId, replaceWithLabelId, downloadPath)
 
 
 def downloadAttachments(service, labelId, replaceWithLabelId, downloadPath):
@@ -56,13 +63,13 @@ def downloadAttachments(service, labelId, replaceWithLabelId, downloadPath):
 
     for message in messages:
         try:
-            processMessage(service, message["id"], labelId, replaceWithLabelId)
+            processMessage(service, message["id"], labelId, replaceWithLabelId, downloadPath)
         except Exception:
             print("Error at message {message}".format(message=message))
 
 
-def processMessage(service, messageId, labelId, replaceWithLabelId):
-    downloadAttachment(service, messageId, "out/")
+def processMessage(service, messageId, labelId, replaceWithLabelId, downloadPath):
+    downloadAttachment(service, messageId, downloadPath)
     markMessageAsProcessed(service, messageId, labelId, replaceWithLabelId)
 
 
