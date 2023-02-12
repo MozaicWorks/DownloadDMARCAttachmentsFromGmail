@@ -48,7 +48,7 @@ deb-install: ## Install Debian package
 deb-remove: ## Uninstall Debian package
 	sudo apt purge downloaddmarcfilesfromgmail_1.0_amd64.deb
 
-dist: clean setup.py ## Creates a source distribution and wheel distribution
+dist: clean ## Creates a source distribution and wheel distribution
 	pipenv run python setup.py sdist bdist_wheel
 	pipenv run twine check ./dist/*
 	pipenv run check-wheel-contents dist/*.whl
