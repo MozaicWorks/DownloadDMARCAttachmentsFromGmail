@@ -4,9 +4,11 @@ run:
 	pipenv run python DownloadDMARCFilesFromGmail/download.py
 
 
-dev-install:
-	pipenv install
+install:
+	pipenv install --deploy
 
+install-dev:
+	pipenv install --deploy --dev
 
 packager-install:
 	sudo gem install fpm
