@@ -1,5 +1,13 @@
 secrets/
 out/
+build/
+dist/
+
+# Python
+*.pyc
+__pycache__
+*.sw?
+*.egg-info/
 
 # VSCode
 .vscode

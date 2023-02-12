@@ -16,3 +16,8 @@ black = "*"
 
 [requires]
 python_version = "3.10"
+
+[build]
+wheel = "*"
+twine = "*"
+check-wheel-contents = "*"

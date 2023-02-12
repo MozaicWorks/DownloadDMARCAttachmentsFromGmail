@@ -2,8 +2,8 @@ import argparse
 import sys
 import os
 
-from GmailAuth import GmailAuth
-from GmailLabelQuery import GmailLabelQuery
+from DownloadDMARCFilesFromGmail.GmailAuth import GmailAuth
+from DownloadDMARCFilesFromGmail.GmailLabelQuery import GmailLabelQuery
 
 
 def main():

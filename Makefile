@@ -5,14 +5,30 @@ args=""
 help: ## Print the help documentation
 	@grep -h -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
+clean: ## Cleans the distribution directory
+	rm -rf ./dist ./build ./*.egg-info
+
 run: ## Execute DownloadDMARCFilesFromGmail
-	pipenv run python DownloadDMARCFilesFromGmail/download.py $(args)
+	pipenv run python -m DownloadDMARCFilesFromGmail $(args)
 
 install: ## Install runtime dependencies
 	pipenv install --deploy
 
 install-dev: install ## Install development dependencies
 	pipenv install --deploy --dev
+
+install-build: ## Install build dependencies
+	pipenv install --categories="build"
+
+format: ## Format source and test code according to PEP8 standards
+	pipenv run black --skip-string-normalization DownloadDMARCFilesFromGmail
+	pipenv run black --skip-string-normalization tests
+
+lint: ## Check compliance with the style guide
+	pipenv run flake8
+
+test: lint ## Run unit tests
+	pipenv run python -m unittest
 
 packager-install:
 	sudo gem install fpm
@@ -34,15 +50,10 @@ deb-install: ## Install Debian package
 deb-remove: ## Uninstall Debian package
 	sudo apt purge downloaddmarcfilesfromgmail_1.0_amd64.deb
 
-format: ## Format source and test code according to PEP8 standards
-	pipenv run black --skip-string-normalization DownloadDMARCFilesFromGmail
-	pipenv run black --skip-string-normalization tests
-
-lint: ## Check compliance with the style guide
-	pipenv run flake8
-
-test: lint ## Run unit tests
-	pipenv run python -m unittest
+dist: clean ## Creates a source distribution and wheel distribution
+	pipenv run python setup.py sdist bdist_wheel
+	pipenv run twine check ./dist/*
+	pipenv run check-wheel-contents dist/*.whl
 
 tag: ## Tag version
 	if [[ -z "${version}" ]]; then echo "version must be set";false; fi
