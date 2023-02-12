@@ -123,6 +123,7 @@ def downloadAttachment(service, messageId, downloadPath):
             for it in message["payload"]["parts"]
             if it["mimeType"] == "application/octet-stream"
             or it["mimeType"] == "application/gzip"
+            or it["mimeType"] == "application/zip"
         )
         fileName = part["filename"]
         print("Processing file {fileName}".format(fileName=fileName))
