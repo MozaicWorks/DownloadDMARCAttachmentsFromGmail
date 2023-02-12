@@ -9,7 +9,6 @@ google-auth-httplib2 = "*"
 google-auth-oauthlib = "*"
 
 [dev-packages]
-pipenv-setup = {extras = ["black"], version = "*"}
 vistir = "~=0.6.1"
 flake8 = "*"
 black = "*"
@@ -18,6 +17,7 @@ black = "*"
 python_version = "3.10"
 
 [build]
+pipenv-setup = {extras = ["black"], version = "*"}
 wheel = "*"
 twine = "*"
 check-wheel-contents = "*"
