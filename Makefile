@@ -16,7 +16,7 @@ install-dev: install ## Install development dependencies
 	pipenv install --deploy --dev
 
 install-build: ## Install build dependencies
-	pipenv install --categories="build"
+	pipenv install --deploy --categories="build"
 
 format: ## Format source and test code according to PEP8 standards
 	pipenv run black --skip-string-normalization DownloadDMARCFilesFromGmail
