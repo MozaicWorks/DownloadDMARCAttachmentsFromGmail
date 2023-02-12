@@ -48,7 +48,7 @@ def downloadAttachments(service, labelId, replaceWithLabelId, downloadPath):
     for message in messages:
         try:
             processMessage(service, message["id"], labelId, replaceWithLabelId)
-        except:
+        except Exception:
             print("Error at message {message}".format(message=message))
 
 
