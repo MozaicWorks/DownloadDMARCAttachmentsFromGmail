@@ -1,5 +1,4 @@
 import unittest
-from DownloadDMARCFilesFromGmail.download import *
 
 class AllTests(unittest.TestCase):
 
