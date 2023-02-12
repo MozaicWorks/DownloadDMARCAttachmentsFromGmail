@@ -107,28 +107,28 @@ setup(
     # For an analysis of "install_requires" vs pip's requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        "cachetools==5.2.0; python_version ~= '3.7'",
-        "certifi==2022.9.24; python_version >= '3.6'",
-        "charset-normalizer==2.1.1; python_version >= '3.6'",
-        "google-api-core==2.10.2; python_version >= '3.7'",
-        "google-api-python-client==2.65.0",
-        "google-auth==2.13.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
+        "cachetools==5.3.0; python_version ~= '3.7'",
+        "certifi==2022.12.7; python_version >= '3.6'",
+        "charset-normalizer==3.0.1; python_version >= '3.6'",
+        "google-api-core==2.11.0; python_version >= '3.7'",
+        "google-api-python-client==2.77.0",
+        "google-auth==2.16.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
         "google-auth-httplib2==0.1.0",
-        "google-auth-oauthlib==0.5.3",
-        "googleapis-common-protos==1.56.4; python_version >= '3.7'",
-        "httplib2==0.20.4; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+        "google-auth-oauthlib==1.0.0",
+        "googleapis-common-protos==1.58.0; python_version >= '3.7'",
+        "httplib2==0.21.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
         "idna==3.4; python_version >= '3.5'",
         "oauthlib==3.2.2; python_version >= '3.6'",
-        "protobuf==4.21.8; python_version >= '3.7'",
+        "protobuf==4.21.12; python_version >= '3.7'",
         "pyasn1==0.4.8",
         "pyasn1-modules==0.2.8",
         "pyparsing==3.0.9; python_version >= '3.1'",
-        "requests==2.28.1; python_version >= '3.7' and python_version < '4'",
+        "requests==2.28.2; python_version >= '3.7' and python_version < '4'",
         "requests-oauthlib==1.3.1; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
         "rsa==4.9; python_version >= '3.6'",
         "six==1.16.0; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
         "uritemplate==4.1.1; python_version >= '3.6'",
-        "urllib3==1.26.12; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5' and python_version < '4'",  # noqa: E501
+        "urllib3==1.26.14; python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
     ],  # Optional
     # List additional groups of dependencies here (e.g. development
     # dependencies). Users will be able to install these using the "extras"

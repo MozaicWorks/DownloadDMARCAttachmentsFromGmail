@@ -33,7 +33,7 @@ test: lint ## Run unit tests
 packager-install:
 	sudo gem install fpm
 
-setup.py:
+setup.py: ## Sync dependencies in Pipfile or Pipfile.lock to setup.py
 	pipenv run pipenv-setup sync
 
 
@@ -50,7 +50,7 @@ deb-install: ## Install Debian package
 deb-remove: ## Uninstall Debian package
 	sudo apt purge downloaddmarcfilesfromgmail_1.0_amd64.deb
 
-dist: clean ## Creates a source distribution and wheel distribution
+dist: clean setup.py ## Creates a source distribution and wheel distribution
 	pipenv run python setup.py sdist bdist_wheel
 	pipenv run twine check ./dist/*
 	pipenv run check-wheel-contents dist/*.whl
