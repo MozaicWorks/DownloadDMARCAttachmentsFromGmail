@@ -19,11 +19,10 @@ install-build: ## Install build dependencies
 	pipenv install --deploy --categories="build"
 
 format: ## Format source and test code according to PEP8 standards
-	pipenv run black --skip-string-normalization DownloadDMARCFilesFromGmail
-	pipenv run black --skip-string-normalization tests
+	pipenv run black --skip-string-normalization DownloadDMARCFilesFromGmail tests
 
 lint: ## Check compliance with the style guide
-	pipenv run flake8
+	pipenv run flake8 DownloadDMARCFilesFromGmail tests
 
 test: lint ## Run unit tests
 	pipenv run python -m unittest
