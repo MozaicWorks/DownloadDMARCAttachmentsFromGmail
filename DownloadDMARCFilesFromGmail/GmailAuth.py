@@ -9,7 +9,6 @@ GMAIL_AUTH_SECRETS_PATH = "~/.download_dmarc_from_gmail"
 
 
 class GmailAuth:
-
     def __init__(
         self,
         scopes,

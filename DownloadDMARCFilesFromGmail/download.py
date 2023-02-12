@@ -9,12 +9,12 @@ from DownloadDMARCFilesFromGmail.GmailLabelQuery import GmailLabelQuery
 def main():
     parser = argparse.ArgumentParser(
         description='Download DMARC attachments from your Gmail account. '
-                    'The emails are found based on a label, '
-                    'and once the download is successful the processed label is applied. '
-                    'First you need to setup a Google Cloud Console app that allows access to Gmail API. '
-                    'Visit https://console.cloud.google.com to set it up, '
-                    'copy the authentication file to the secrets folder, '
-                    'and rename it to "client_id.json".'
+        'The emails are found based on a label, '
+        'and once the download is successful the processed label is applied. '
+        'First you need to setup a Google Cloud Console app that allows access to Gmail API. '
+        'Visit https://console.cloud.google.com to set it up, '
+        'copy the authentication file to the secrets folder, '
+        'and rename it to "client_id.json".'
     )
     parser.add_argument(
         '--labelName',
@@ -63,7 +63,9 @@ def downloadAttachments(service, labelId, replaceWithLabelId, downloadPath):
 
     for message in messages:
         try:
-            processMessage(service, message["id"], labelId, replaceWithLabelId, downloadPath)
+            processMessage(
+                service, message["id"], labelId, replaceWithLabelId, downloadPath
+            )
         except Exception:
             print("Error at message {message}".format(message=message))
 
