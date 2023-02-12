@@ -5,10 +5,11 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 import os
 import pickle
 
-GMAIL_AUTH_SECRETS_PATH="~/.download_dmarc_from_gmail"
+GMAIL_AUTH_SECRETS_PATH = "~/.download_dmarc_from_gmail"
 
 
 class GmailAuth:
+
     def __init__(
         self,
         scopes,
