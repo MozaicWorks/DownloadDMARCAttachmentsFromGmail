@@ -1,4 +1,4 @@
-.PHONY: run dev-install setup.py test packager-install deb deb-install deb-remove
+.PHONY: run install dev-install lint setup.py test packager-install deb deb-install deb-remove
 
 run:
 	pipenv run python DownloadDMARCFilesFromGmail/download.py
@@ -32,5 +32,8 @@ deb-remove:
 	sudo apt purge downloaddmarcfilesfromgmail_1.0_amd64.deb
 
 
-test:
+lint:
+	pipenv run flake8
+
+test: lint
 	pipenv run python -m unittest
