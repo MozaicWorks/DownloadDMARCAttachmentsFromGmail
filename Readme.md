@@ -36,6 +36,14 @@ Third, create a label under which the messages will be posted after a successful
 
 You are now ready to run it. Just pass in the label name and the processed label name, if different from the defaults. The tool will download the attachments for messages found under the DMARC label into an `out` folder and replace the DMARC label with the processed label. This allows you to double check the results, and do whatever you want with the processed messages.
 
+## Renewing OAuth Client ID
+
+When renewing the OAuth Client ID, download the OAuth client JSON file again.
+
+Move the file to `./secrets/client_id.json`.
+
+Delete the file `./secrets/token.pickle`.
+
 ## Known Issues
 
 We're still figuring out the different ways the attachment id is found in Gmail messages, so processing fails for some messages.
@@ -48,7 +56,7 @@ Due to limitations in the Gmail API, the tool processes max. 500 messages at onc
 
 If you're looking for a simple tool to generate a report from the downloaded attachments, check out the companion tool [DMARC Reporting](https://github.com/MozaicWorks/DMARCReporting).
 
-## Development setup 
+## Development setup
 
 * Make sure you have python 3.10
 * Install [pipenv](https://pipenv.pypa.io/en/latest/#install-pipenv-today)
