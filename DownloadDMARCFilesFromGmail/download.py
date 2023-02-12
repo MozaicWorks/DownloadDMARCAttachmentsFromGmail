@@ -57,7 +57,7 @@ def main():
 
 
 def downloadAttachments(service, labelId, replaceWithLabelId, downloadPath):
-    messages = messagesWithLabel(service, labelId)["messages"]
+    messages = messagesWithLabel(service, labelId)
     print("Found {messageCount} messages".format(messageCount=len(messages)))
     createDownloadPath(downloadPath)
 
@@ -101,12 +101,13 @@ def labelIdFromName(service, name):
 
 def messagesWithLabel(service, labelId):
     MAX_ALLOWED_MESSAGES_COUNT = 500
-    return (
+    result = (
         service.users()
         .messages()
         .list(userId="me", maxResults=MAX_ALLOWED_MESSAGES_COUNT, labelIds=[labelId])
         .execute()
     )
+    return result.get("messages", [])
 
 
 def downloadAttachment(service, messageId, downloadPath):
