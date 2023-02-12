@@ -1,4 +1,4 @@
-.PHONY: run install dev-install lint setup.py test packager-install deb deb-install deb-remove
+.PHONY: run install dev-install lint tag setup.py test packager-install deb deb-install deb-remove
 
 help: ## Print the help documentation
 	@grep -h -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -37,3 +37,8 @@ lint: ## Check compliance with the style guide
 
 test: lint ## Run unit tests
 	pipenv run python -m unittest
+
+tag: ## Tag version
+	if [[ -z "${version}" ]]; then echo "version must be set";false; fi
+	git tag -a $(version) -m "Bump version $(version)"
+	git push origin master --follow-tags
