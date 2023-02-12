@@ -14,7 +14,8 @@ def main():
     processedLabelName = args.processedLabelName
     try:
         service = authenticate()
-    except:
+    except Exception as e:
+        print(e)
         sys.exit("ERROR: Authentication failed. Have you enabled access to Gmail API? Check https://github.com/MozaicWorks/DownloadDMARCAttachmentsFromGmail#how-to-use for instructions")
 
     labelQuery = GmailLabelQuery(service)
