@@ -1,2 +1,5 @@
 secrets/
 out/
+
+# VSCode
+.vscode
