@@ -5,19 +5,21 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 import os
 import pickle
 
+GMAIL_AUTH_SECRETS_PATH="~/.download_dmarc_from_gmail"
+
 
 class GmailAuth:
     def __init__(
         self,
         scopes,
-        clientIdFileName="secrets/client_id.json",
-        tokenFileName="secrets/token.pickle",
-        serviceAccountIdFileName="secrets/service_id.json",
+        clientIdFileName=f"{GMAIL_AUTH_SECRETS_PATH}/client_id.json",
+        tokenFileName=f"{GMAIL_AUTH_SECRETS_PATH}/token.pickle",
+        serviceAccountIdFileName=f"{GMAIL_AUTH_SECRETS_PATH}/service_id.json",
     ):
-        self.clientIdFileName = clientIdFileName
+        self.clientIdFileName = os.path.expanduser(clientIdFileName)
         self.scopes = scopes
-        self.tokenFileName = tokenFileName
-        self.serviceAccountIdFileName = serviceAccountIdFileName
+        self.tokenFileName = os.path.expanduser(tokenFileName)
+        self.serviceAccountIdFileName = os.path.expanduser(serviceAccountIdFileName)
 
     def authenticateWithClientAccount(self):
         creds = None
