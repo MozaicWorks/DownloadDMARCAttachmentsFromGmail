@@ -1,5 +1,7 @@
+.PHONY: run dev-install setup.py test packager-install deb deb-install deb-remove
+
 run:
-	pipenv run python DownloadDMARCFilesFromGmail/download.py 
+	pipenv run python DownloadDMARCFilesFromGmail/download.py
 
 
 dev-install:
@@ -28,8 +30,5 @@ deb-remove:
 	sudo apt purge downloaddmarcfilesfromgmail_1.0_amd64.deb
 
 
-test: .PHONY
+test:
 	pipenv run python -m unittest
-
-
-.PHONY:
