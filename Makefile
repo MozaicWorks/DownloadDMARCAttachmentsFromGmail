@@ -1,10 +1,12 @@
 .PHONY: run install dev-install lint tag setup.py test packager-install deb deb-install deb-remove
 
+args=""
+
 help: ## Print the help documentation
 	@grep -h -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 run: ## Execute DownloadDMARCFilesFromGmail
-	pipenv run python DownloadDMARCFilesFromGmail/download.py
+	pipenv run python DownloadDMARCFilesFromGmail/download.py $(args)
 
 install: ## Install runtime dependencies
 	pipenv install --deploy
