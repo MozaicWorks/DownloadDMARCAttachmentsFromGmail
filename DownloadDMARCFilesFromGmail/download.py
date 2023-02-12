@@ -1,5 +1,5 @@
-from GmailAuth import *
-from GmailLabelQuery import *
+from GmailAuth import GmailAuth
+from GmailLabelQuery import GmailLabelQuery
 import argparse
 import sys
 
