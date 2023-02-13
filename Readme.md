@@ -28,7 +28,7 @@ First, you need to give the tool access to your Gmail account through the API. H
   * For **Name** fill in "DownloadDMARCAttachments"
   * Select **Create**
   * Download the JSON file
-* Create a `~/.download_dmarc_from_gmail` folder, copy the client json file into it, and rename it to `client_id.json`
+* Create a `~/.config/dmarc` folder, copy the client json file into it, and rename it to `client_id.json`
 
 Second, you need to ensure that all the DMARC messages in your Gmail inbox have a label. By default, the label is "DMARC".
 
