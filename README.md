@@ -8,7 +8,7 @@ A tool to download DMARC from Gmail email attachments. Consider it under develop
 
 ```bash
 pip3 install DownloadDMARCAttachmentsFromGmail
-DownloadDMARCAttachmentsFromGmail --help
+DownloadDMARCFilesFromGmail --help
 ```
 
 ## How To Use
