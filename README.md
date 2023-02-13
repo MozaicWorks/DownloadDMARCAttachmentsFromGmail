@@ -4,6 +4,13 @@
 
 A tool to download DMARC from Gmail email attachments. Consider it under development, so use with care. Feedback and PRs are welcome!
 
+## Installation
+
+```bash
+pip3 install DownloadDMARCAttachmentsFromGmail
+DownloadDMARCAttachmentsFromGmail --help
+```
+
 ## How To Use
 
 First, you need to give the tool access to your Gmail account through the API. Here's how to do it for a workspace account:
@@ -64,7 +71,7 @@ If you're looking for a simple tool to generate a report from the downloaded att
 With default arguments, i.e. `--labelName DMARC --processedLabelName PROCESSED_DMARC`
 
 ```bash
-make install
+make install-dev
 make run
 ```
 
