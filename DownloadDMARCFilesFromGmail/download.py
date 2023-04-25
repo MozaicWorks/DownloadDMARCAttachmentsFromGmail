@@ -7,6 +7,7 @@ import filetype
 from DownloadDMARCFilesFromGmail.GmailAuth import GmailAuth
 from DownloadDMARCFilesFromGmail.GmailLabelQuery import GmailLabelQuery
 
+
 def main():
     parser = argparse.ArgumentParser(
         description='Download DMARC attachments from your Gmail account. '
@@ -118,7 +119,7 @@ def downloadAttachment(service, messageId, downloadPath):
     import base64
 
     message = service.users().messages().get(userId="me", id=messageId).execute()
-    if "filename" in message["payload"]:
+    if "filename" in message["payload"] and "parts" not in message["payload"]:
         fileName = message["payload"]["filename"]
         if not fileName:
             fileName = f"noname-{messageId}"
