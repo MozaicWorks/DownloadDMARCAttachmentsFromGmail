@@ -2,9 +2,10 @@ import argparse
 import sys
 import os
 
+import filetype
+
 from DownloadDMARCFilesFromGmail.GmailAuth import GmailAuth
 from DownloadDMARCFilesFromGmail.GmailLabelQuery import GmailLabelQuery
-
 
 def main():
     parser = argparse.ArgumentParser(
@@ -66,8 +67,9 @@ def downloadAttachments(service, labelId, replaceWithLabelId, downloadPath):
             processMessage(
                 service, message["id"], labelId, replaceWithLabelId, downloadPath
             )
-        except Exception:
+        except Exception as e:
             print("Error at message {message}".format(message=message))
+            print(repr(e))
 
 
 def processMessage(service, messageId, labelId, replaceWithLabelId, downloadPath):
@@ -116,8 +118,10 @@ def downloadAttachment(service, messageId, downloadPath):
     import base64
 
     message = service.users().messages().get(userId="me", id=messageId).execute()
-    if message["payload"]["filename"]:
+    if "filename" in message["payload"]:
         fileName = message["payload"]["filename"]
+        if not fileName:
+            fileName = f"noname-{messageId}"
         print("Processing file {fileName}".format(fileName=fileName))
         attachmentId = message["payload"]["body"]["attachmentId"]
     else:
@@ -146,6 +150,13 @@ def downloadAttachment(service, messageId, downloadPath):
     filePath = os.path.join(downloadPath, fileName)
     with open(filePath, 'wb') as f:
         f.write(file_data)
+    ext = os.path.splitext(filePath)[1]
+    if not ext:
+        print(f"Determining file extension for {fileName}")
+        kind = filetype.guess(filePath)
+        fileName = f"{fileName}.{kind.extension}"
+        newFilePath = os.path.join(downloadPath, fileName)
+        os.rename(filePath, newFilePath)
 
     print("File {fileName} written".format(fileName=fileName))
 
