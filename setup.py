@@ -26,7 +26,7 @@ with open(path.join(here, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="DownloadDMARCAttachmentsFromGmail",  # Required
-    version="0.1.0",  # Required
+    version="0.2.0",  # Required
     description="Downloads DMARC attachments from Gmail",  # Optional
     # This is an optional longer description of your project that represents
     # the body of text which users will see when they visit PyPI.
